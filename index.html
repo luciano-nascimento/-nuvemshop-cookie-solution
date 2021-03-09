@@ -1,0 +1,45 @@
+<script>
+        const cookiePopup = `<div id="cookie-popup" style=" position: fixed;
+                            right: 0;
+                            bottom: 0;
+                            max-width:600px;
+                            background: rgba(0,0,0,0.85);
+                            border: 0px solid #e2e2e2;
+                            z-index: 9999;
+                            transition: all 0.3s ease-in-out;
+                            opacity: 0.95;
+                        padding: 16px;">
+                            <p style="margin: 0; color: #fff;">
+                                Nosso site utiliza cookies para te proporcionar uma melhor experiência. Ao acessar esse site, você concorda com a nossa <a href="/politica-de-privacidade" target="_blank" style="color: #fff; font-weight:bold">Política de privacidade e Cookies</a>
+                            </p>
+                            <a id="cookie-popup-agree-btn" style=" display: inline-block;
+                                margin-top: 16px;
+                                color:#fff;
+                                background-color: #565555;
+                                padding: 8px 10px;
+                                float: right;
+                                cursor: pointer;"
+                            >
+                                CONCORDO
+                            </a>
+                        </div>` ;       
+        
+        const shouldDisplayCookiePopup = localStorage.getItem('cookieAccepted') != "true";
+
+        if(shouldDisplayCookiePopup) {
+            displayCookiePopup()
+        }               
+          
+        function displayCookiePopup() {
+            const div = document.createElement('div');
+            div.innerHTML = cookiePopup;
+            document.querySelector('body').appendChild(div);
+            document.getElementById('cookie-popup-agree-btn').addEventListener('click', removeCookiePopup);
+        }
+        
+        function removeCookiePopup() {
+            localStorage.setItem('cookieAccepted', "true");
+            document.getElementById('cookie-popup').remove();
+        }
+
+</script>
