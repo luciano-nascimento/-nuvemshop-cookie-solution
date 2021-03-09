@@ -1,1 +1,1 @@
-# -nuvemshop-cookie-solution
+# nuvemshop-cookie-solution
